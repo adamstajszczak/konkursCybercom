@@ -1,0 +1,47 @@
+﻿
+@model IEnumerable<miniLibrary2017.Models.ViewBook>
+@{
+    ViewBag.Title = "Lista książek";
+}
+
+<h2>Lista książek</h2>
+<div>
+    <table class="table-bordered table-striped">
+        <thead>
+            <tr>
+                <th class="text-center">@Html.DisplayNameFor(x => x.book.Title)</th>
+                <th class="text-center">Autor</th>
+                <th class="text-center">@Html.DisplayNameFor(x => x.book.ISBN)</th>
+                <th class="text-center">@Html.DisplayNameFor(x => x.book.YearOfPublish)</th>
+@if (Request.IsAuthenticated)
+{
+                <th class="text-center">Akcja</th>
+}
+            </tr>
+        </thead>
+        <tbody>
+            @{ 
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.book.Title</td> <td class="text-center"> @item.author.LastName @item.author.FirstName</td>
+                        <td class="text-center">@item.book.ISBN</td> <td class="text-center">@item.book.YearOfPublish.ToString("dd/MM/yyyy")</td>
+                        @if (Request.IsAuthenticated) { 
+                        <td class="text-center">@Html.ActionLink("Edycja", "EditBook", new { id=item.book.Id })
+                        @Html.ActionLink("Usuń", "DeleteBook", new { id = item.book.Id }, new { @style = "color:#ff0000;" })</td>
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+
+    </table>
+    <br/>
+@if (Request.IsAuthenticated)
+{
+    <p>
+        <button class="btn btn-info" onclick="location.href='@Url.Action("EditBook")';return false;">Dodaj nową ksiażkę</button>
+    </p>
+}
+</div>
+

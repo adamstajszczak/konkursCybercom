@@ -1,0 +1,118 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ 
+    <script>
+  ( function( factory ) {
+      if (typeof define === "function" && define.amd)
+      {
+        define( [ "../widgets/datepicker" ], factory );
+      }
+      else
+      {
+        factory( jQuery.datepicker );
+    }
+  }(function (datepicker)
+  {
+
+      datepicker.regional.pl =
+          {
+    closeText: "Zamknij",
+    prevText: "&#x3C;Poprzedni",
+    nextText: "Następny&#x3E;",
+    currentText: "Dziś",
+    monthNames: [ "Styczeń","Luty","Marzec","Kwiecień","Maj","Czerwiec",
+    "Lipiec","Sierpień","Wrzesień","Październik","Listopad","Grudzień" ],
+    monthNamesShort: [ "Sty","Lu","Mar","Kw","Maj","Cze",
+    "Lip","Sie","Wrz","Pa","Lis","Gru" ],
+    dayNames: [ "Niedziela","Poniedziałek","Wtorek","Środa","Czwartek","Piątek","Sobota" ],
+    dayNamesShort: [ "Nie","Pn","Wt","Śr","Czw","Pt","So" ],
+    dayNamesMin: [ "N","Pn","Wt","Śr","Cz","Pt","So" ],
+    weekHeader: "Tydz",
+    dateFormat: "yy-mm-dd",
+    firstDay: 1,
+    isRTL: false,
+    showMonthAfterYear: false,
+    yearSuffix: "" };
+datepicker.setDefaults( datepicker.regional.pl );
+
+return datepicker.regional.pl;
+
+} ) );
+      $(function() {
+        $( "#datepicker" ).datepicker();
+      });
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="container">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                    @Html.ActionLink("miniLibrary2017", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @if (User.Identity.Name == "admin")
+                {
+                    @Html.ActionLink("ShadowBook", "ShadowBook", "ShadowBook", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("ShadowAuthor", "ShadowAuthor", "ShadowAuthor", new { area = "" }, new { @class = "navbar-brand" })
+                }
+
+</div>
+            @if (Request.IsAuthenticated)
+            {
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href=@Url.Action("Logout", "User")><span class="glyphicon glyphicon-log-out"></span> Wyloguj</a></li>
+                </ul>
+            }
+            else
+            {
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href=@Url.Action("Register", "User")><span class="glyphicon glyphicon-user"></span>Rejestracja</a></li>
+                    <li><a href=@Url.Action("Login", "User")><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                 </ul>
+            }
+
+
+
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+          
+         
+            @if (Request.IsAuthenticated)
+            { <p>Zalogowany: @Html.Encode(User.Identity.Name) </p>}
+            <p>&copy; @DateTime.Now.Year - miniLibrary Application - Adam Stajszczak &reg;</p>
+        </footer>
+    </div>
+
+
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

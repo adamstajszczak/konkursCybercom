@@ -1,0 +1,19 @@
+﻿@model miniLibrary2017.Models.User
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true,"Bład logowania. Sprawdź swóje dane.")
+    <div>
+        <fieldset>
+            <legend>Strona logowania</legend>
+            <div>@Html.LabelFor(u=> u.Login)</div>
+        </fieldset>
+    </div>
+}
+

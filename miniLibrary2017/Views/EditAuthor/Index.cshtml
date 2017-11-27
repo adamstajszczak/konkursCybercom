@@ -1,0 +1,42 @@
+﻿
+@model IEnumerable<miniLibrary2017.Models.Author>
+@{
+    ViewBag.Title = "Lista Autorów";
+}
+
+<h2>Lista Autorów</h2>
+
+<div>
+    <table class="table-bordered table-striped">
+        <thead>
+            <tr><th class="text-center">@Html.DisplayNameFor(x=>x.FirstName)</th><th class="text-center">@Html.DisplayNameFor(x => x.LastName)</th>
+            @if (Request.IsAuthenticated)
+            {
+            <th class="text-center">Akcja</th>
+            }
+            </tr>
+        </thead>
+        <tbody>
+            @{ 
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">@item.FirstName</td> <td class="text-center">@item.LastName</td>
+        @if (Request.IsAuthenticated)
+        {
+                        <td>@Html.ActionLink("Edycja", "EditAuthor", new { id = item.Id }) @Html.ActionLink("Usuń", "DeleteAuthor", new { id = item.Id }, new { @style = "color:#ff0000;" })</td>
+        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <br/>
+@if (Request.IsAuthenticated)
+{
+    <p>
+        <button class="btn btn-info" onclick="location.href='@Url.Action("EditAuthor")';return false;">Dodaj nowego autora</button>
+    </p>
+}
+</div>
+

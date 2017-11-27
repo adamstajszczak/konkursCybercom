@@ -1,0 +1,40 @@
+﻿
+@model IEnumerable<miniLibrary2017.Models.ShadowAuthor>
+@{
+    ViewBag.Title = "ShadowAuthor";
+}
+
+<h2>Lista ShadowBook</h2>
+
+<div>
+    <table class="table-bordered table-striped">
+        <thead>
+            <tr>
+                <th class="text-center">@Html.DisplayNameFor(x => x.ShadowId)</th>
+                <th class="text-center">@Html.DisplayNameFor(x => x.LastName)</th>
+                <th class="text-center">@Html.DisplayNameFor(x => x.FirstName)</th>
+                <th class="text-center">@Html.DisplayNameFor(x => x.ShadowTimestamp)</th>
+                <th class="text-center">@Html.DisplayNameFor(x => x.ShadowOption)</th>
+                <th class="text-center">Akcja</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">@item.ShadowId</td>
+                        <td class="text-center">@item.LastName</td>
+                        <td class="text-center">@item.FirstName</td>
+                        <td class="text-center">@item.ShadowTimestamp.ToString("dd/MM/yyyy")</td>
+                        <td class="text-center">@item.ShadowOption</td>
+                        <td>@Html.ActionLink("Przywróć", "ReturnShadowAuthor", new { shadowId = item.Id })
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+</div>
