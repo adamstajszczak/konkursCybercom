@@ -3,21 +3,22 @@
 @{
     ViewBag.Title = "ShadowBook";
 }
-
+ @if (User.Identity.Name == "admin")
+ {
 <h2>Lista ShadowBook</h2>
 
-<div>
-    <table class="table-bordered table-striped">
+<div class="container">
+    <table class="table">
         <thead>
             <tr>
-                <th class="text-center">@Html.DisplayNameFor(x => x.ShadowId)</th>
-                <th class="text-center">@Html.DisplayNameFor(x => x.Title)</th>
-                <th class="text-center">@Html.DisplayNameFor(x => x.IdAuthor)</th>
-                <th class="text-center">@Html.DisplayNameFor(x => x.YearOfPublish)</th>
-                <th class="text-center">@Html.DisplayNameFor(x => x.ISBN)</th>
-                <th class="text-center">@Html.DisplayNameFor(x => x.ShadowTimestamp)</th>
-                <th class="text-center">@Html.DisplayNameFor(x => x.ShadowOption)</th>
-                <th class="text-center">Akcja</th>
+                <th>@Html.DisplayNameFor(x => x.ShadowId)</th>
+                <th>@Html.DisplayNameFor(x => x.Title)</th>
+                <th>@Html.DisplayNameFor(x => x.IdAuthor)</th>
+                <th>@Html.DisplayNameFor(x => x.YearOfPublish)</th>
+                <th>@Html.DisplayNameFor(x => x.ISBN)</th>
+                <th>@Html.DisplayNameFor(x => x.ShadowTimestamp)</th>
+                <th>@Html.DisplayNameFor(x => x.ShadowOption)</th>
+                <th>Akcja</th>
             
 
             </tr>
@@ -27,13 +28,13 @@
                 foreach (var item in Model)
                 {
                     <tr>
-                        <td class="text-center">@item.ShadowId</td>
-                        <td class="text-center">@item.Title</td>
-                        <td class="text-center">@item.IdAuthor</td>
-                        <td class="text-center">@item.YearOfPublish.ToString("dd/MM/yyyy")</td>
-                        <td class="text-center">@item.ISBN</td>
-                        <td class="text-center">@item.ShadowTimestamp.ToString("dd/MM/yyyy")</td>
-                        <td class="text-center">@item.ShadowOption</td>
+                        <td>@item.ShadowId</td>
+                        <td>@item.Title</td>
+                        <td>@item.IdAuthor</td>
+                        <td>@item.YearOfPublish.ToString("dd/MM/yyyy")</td>
+                        <td>@item.ISBN</td>
+                        <td>@item.ShadowTimestamp.ToString("dd/MM/yyyy")</td>
+                        <td>@item.ShadowOption</td>
                         <td>@Html.ActionLink("Przywróć", "ReturnShadowBook", new { shadowId = item.Id })
 </tr>
                 }
@@ -42,3 +43,8 @@
     </table>
 
 </div>
+                }
+                else
+                {
+                    <h3>Nie masz uprawnień administracyjnych</h3>
+                }

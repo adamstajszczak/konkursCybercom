@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "ReturnShadowAuthor";
 }
-
+@if (User.Identity.Name == "admin")
+{
 <h2>Przywracanie Autora</h2>
 
 <div>
@@ -51,7 +52,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
@@ -60,3 +62,8 @@
         </div>
     }
 </div>
+}
+else
+{
+    <h3>Nie masz uprawnień administracyjnych</h3>
+}

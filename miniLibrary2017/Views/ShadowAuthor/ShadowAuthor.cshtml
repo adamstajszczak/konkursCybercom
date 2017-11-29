@@ -3,19 +3,20 @@
 @{
     ViewBag.Title = "ShadowAuthor";
 }
-
+@if (User.Identity.Name == "admin")
+{
 <h2>Lista ShadowBook</h2>
 
-<div>
-    <table class="table-bordered table-striped">
+<div class="container">
+    <table class="table">
         <thead>
             <tr>
-                <th class="text-center">@Html.DisplayNameFor(x => x.ShadowId)</th>
-                <th class="text-center">@Html.DisplayNameFor(x => x.LastName)</th>
-                <th class="text-center">@Html.DisplayNameFor(x => x.FirstName)</th>
-                <th class="text-center">@Html.DisplayNameFor(x => x.ShadowTimestamp)</th>
-                <th class="text-center">@Html.DisplayNameFor(x => x.ShadowOption)</th>
-                <th class="text-center">Akcja</th>
+                <th>@Html.DisplayNameFor(x => x.ShadowId)</th>
+                <th>@Html.DisplayNameFor(x => x.LastName)</th>
+                <th>@Html.DisplayNameFor(x => x.FirstName)</th>
+                <th>@Html.DisplayNameFor(x => x.ShadowTimestamp)</th>
+                <th>@Html.DisplayNameFor(x => x.ShadowOption)</th>
+                <th >Akcja</th>
 
 
             </tr>
@@ -25,11 +26,11 @@
                 foreach (var item in Model)
                 {
                     <tr>
-                        <td class="text-center">@item.ShadowId</td>
-                        <td class="text-center">@item.LastName</td>
-                        <td class="text-center">@item.FirstName</td>
-                        <td class="text-center">@item.ShadowTimestamp.ToString("dd/MM/yyyy")</td>
-                        <td class="text-center">@item.ShadowOption</td>
+                        <td >@item.ShadowId</td>
+                        <td >@item.LastName</td>
+                        <td >@item.FirstName</td>
+                        <td >@item.ShadowTimestamp.ToString("dd/MM/yyyy")</td>
+                        <td >@item.ShadowOption</td>
                         <td>@Html.ActionLink("Przywróć", "ReturnShadowAuthor", new { shadowId = item.Id })
                     </tr>
                 }
@@ -38,3 +39,8 @@
     </table>
 
 </div>
+                }
+                else
+                {
+                    <h3>Nie masz uprawnień administracyjnych</h3>
+                }

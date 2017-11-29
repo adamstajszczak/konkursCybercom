@@ -68,6 +68,8 @@ return datepicker.regional.pl;
                 </button>
 
                     @Html.ActionLink("miniLibrary2017", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                     @Html.ActionLink("Lista Książek", "Index", "EditBook", new { area = "" }, new { @class = "navbar-brand" })
+                      @Html.ActionLink("Lista Autorów", "Index", "EditAuthor", new { area = "" }, new { @class = "navbar-brand" })
                 @if (User.Identity.Name == "admin")
                 {
                     @Html.ActionLink("ShadowBook", "ShadowBook", "ShadowBook", new { area = "" }, new { @class = "navbar-brand" })
