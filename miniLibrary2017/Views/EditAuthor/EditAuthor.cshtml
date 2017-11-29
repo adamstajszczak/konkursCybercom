@@ -8,8 +8,7 @@
 
 @using (Html.BeginForm())
 {
-    if (Request.IsAuthenticated)
-    {
+   
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
@@ -40,11 +39,7 @@
             </div>
         </div>
     </div>
-    }
-    else
-    {
-        <h3>Nie masz uprawnień, załóż konto</h3>
-    }
+   
 
 }
 

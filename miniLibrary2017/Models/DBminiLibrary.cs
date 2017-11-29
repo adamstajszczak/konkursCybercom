@@ -42,7 +42,7 @@ namespace miniLibrary2017.Models
             this.tabAuthor.Add(new Models.Author { FirstName = "Neil", LastName = "Gaiman" });
             this.tabAuthor.Add(new Models.Author { FirstName = "Wojciech", LastName = "Cejrowski" });
 
-            //this.tabUser.Add(new Models.User { Login = "admin", Password = "CLp3LOYSL20V1uqAjIyYEqyOKf1woRKR4NV3V59eLFnjJqv/G+sgvCeKB4roldeYfwFqRD+EqIQEaA+/FeLUfg==", PasswordSalt= "100000.OByZjt1t/1xsiY0j4IQMT5eVbTE2wYOgrzBxesrfJ0nIEw==" });
+            this.tabUser.Add(new Models.User { Login = "admin", Password = "NttVJyKYmLYPu9o54alCWEEzsnYNxkGtIgNL7mbyrcbQ6otn5rUedfvyVPBwj/d3E8ZnFkWSM4MUSwSeEjZi8g==", PasswordSalt= "100000.bAVWskbYpiJGtLjWQKUg/JFbykw2BY1MGidY7LJQwpJt6w==" });
             this.tabShBook.Add(new Models.ShadowBook { ShadowTimestamp = Convert.ToDateTime("12/01/2011", usDtfi), ShadowOption="d", ShadowId=999, YearOfPublish= Convert.ToDateTime("12/01/2011", usDtfi), ISBN=475860473812, IdAuthor=1, Title="TestShadow" });
 
             this.tabShAuthor.Add(new Models.ShadowAuthor { ShadowTimestamp = Convert.ToDateTime("12/01/2011", usDtfi), ShadowOption = "d", ShadowId = 999, FirstName="Dominika", LastName="Żywica" });

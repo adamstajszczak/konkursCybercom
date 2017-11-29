@@ -23,7 +23,7 @@ namespace miniLibrary2017.Controllers
 
         // edycja i dodaj nowy
         [HttpGet]
-
+        [Authorize]
         public ActionResult EditAuthor(int? id)
         {
             Author toEdit;
@@ -41,6 +41,7 @@ namespace miniLibrary2017.Controllers
         }
         //zwracanie po zmianie
         [HttpPost]
+        [Authorize]
         public ActionResult EditAuthor(Author author)
         {
             if (ModelState.IsValid)
@@ -89,6 +90,7 @@ namespace miniLibrary2017.Controllers
 
         //kasowanie Autora
         [HttpGet]
+        [Authorize]
         public ActionResult DeleteAuthor(int id)
         {
             Author toDelete = db.tabAuthor.Find(id);
@@ -99,6 +101,7 @@ namespace miniLibrary2017.Controllers
 
         //zapis zakascji
         [HttpPost]
+        [Authorize]
         public ActionResult DeleteAuthor(Author author)
         {
             Author toDelete = db.tabAuthor.Find(author.Id);

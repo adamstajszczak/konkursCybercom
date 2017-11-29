@@ -28,7 +28,7 @@ namespace miniLibrary2017.Controllers
 
 
         }
-
+        [Authorize]
         [HttpGet]
         public ActionResult EditBook(int? id)
         {
@@ -57,6 +57,7 @@ namespace miniLibrary2017.Controllers
         }
 
         //zapis do zmianie
+        [Authorize]
         [HttpPost]
         public ActionResult EditBook(Book book)
         {
@@ -118,6 +119,7 @@ namespace miniLibrary2017.Controllers
         }
 
         //kasowanie książki
+        [Authorize]
         [HttpGet]
         public ActionResult DeleteBook(int id)
         {
@@ -126,7 +128,7 @@ namespace miniLibrary2017.Controllers
                 return new HttpNotFoundResult();
             return View(toDelete);
         }
-
+        [Authorize]
         [HttpPost]
         public ActionResult DeleteBook(Book book)
         {

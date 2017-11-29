@@ -13,7 +13,7 @@ namespace miniLibrary2017.Controllers
     {
         DBminiLibrary db = new DBminiLibrary();
         // GET: ShadowBook
-
+        [Authorize]
         public ActionResult ShadowAuthor()
         {
             var listShAuthor = (from item in db.tabShAuthor
@@ -28,6 +28,7 @@ namespace miniLibrary2017.Controllers
         ///////////////////////////////////////////////
         //kasowanie autora
         [HttpGet]
+        [Authorize]
         public ActionResult ReturnShadowAuthor(int shadowid)
         {
             ShadowAuthor toReturn = db.tabShAuthor.Find(shadowid);
@@ -37,6 +38,7 @@ namespace miniLibrary2017.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult ReturnShadowAuthor(ShadowAuthor shadowAuthor)
         {
             ShadowAuthor toReturn = db.tabShAuthor.Find(shadowAuthor.ShadowId);

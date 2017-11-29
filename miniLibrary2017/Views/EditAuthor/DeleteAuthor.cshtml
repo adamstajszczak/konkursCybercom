@@ -5,8 +5,7 @@
 }
 
 <h2>Usuwanie Autora</h2>
-@if (Request.IsAuthenticated)
-{
+
 <h3>Czy napewno chcesz to usuąć?</h3>
 <div>
     <h4>Author</h4>
@@ -40,8 +39,3 @@
         </div>
     }
 </div>
-}
-else
-{
-    <h3>Nie masz uprawnień, załóż konto</h3>
-}
